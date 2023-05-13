@@ -1,5 +1,6 @@
 import { View, Text, Image, ScrollView  } from 'react-native';
 import React, { useEffect, useState } from 'react'
+import { Link } from 'expo-router';
 
 import { fetchAPI } from '../../services/fetchAPI'
 
@@ -25,15 +26,21 @@ export default function Products() {
       {
         (productList.length > 0) && productList.map( p => (
           <View key={p.id}>
-          <Image source={{ uri: p.thumbnail }} style={{width: 200, height: 200}}/>
-          <Text>{p.title}</Text>
-          <Text>{p.description}</Text>
-          <Text>Price: ${p.price.toFixed(2)}</Text>
-          <Text>Stock: {p.stock}</Text>
-          <Text>Brand: {p.brand}</Text>
-          <Text>Category: {p.category}</Text>
-          <Text></Text>
-        </View>
+          <Link href={`/products/${p.id}`}>
+            <View>
+              <Image source={{ uri: p.thumbnail }} style={{width: 200, height: 200}}/>
+              <Text>{p.id}</Text>
+              <Text>{p.title}</Text>
+              <Text>{p.description}</Text>
+              <Text>Price: ${p.price.toFixed(2)}</Text>
+              <Text>Stock: {p.stock}</Text>
+              <Text>Brand: {p.brand}</Text>
+              <Text>Category: {p.category}</Text>
+              <Text></Text>
+            </View>
+          </Link>
+            </View>
+
           )
         )
       }
