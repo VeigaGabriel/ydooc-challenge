@@ -12,7 +12,6 @@ export const getUser = (setApiOutput) => {
 })
   .then(response => {
     // Manipular a resposta do servidor
-    console.log(response.data);
     setApiOutput(response.data)
   })
   .catch(error => {
@@ -20,7 +19,6 @@ export const getUser = (setApiOutput) => {
     console.error(error);
   });
 }
-
 
 export const fetchAPI = async (url) => {
   const data = await fetch(url);

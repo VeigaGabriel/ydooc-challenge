@@ -1,34 +1,39 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useFonts } from 'expo-font'
+import { StatusBar } from 'expo-status-bar'
+import { useColorScheme } from 'react-native'
+import { Paragraph, Spacer, TamaguiProvider, Theme, YStack } from 'tamagui'
 
-export default function Page() {
+import { Button } from 'tamagui'
+
+import config from '../tamagui.config'
+import Login from '../src/pages/Login'
+import { Link } from 'expo-router'
+
+export default function App() {
+  const colorScheme = useColorScheme()
+
+  const [loaded] = useFonts({
+    Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
+    InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
+  })
+
+  if (!loaded) {
+    return null
+  }
+
   return (
-    <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Hello World</Text>
-        <Text style={styles.subtitle}>This is the first page of your app.</Text>
-      </View>
-    </View>
-  );
+    <TamaguiProvider config={config}>
+      <Login />
+      <Link href="/">Login</Link>
+      {/* <Theme name={colorScheme === 'dark' ? 'dark' : 'light'}>
+        <YStack f={1} jc="center" ai="center" backgroundColor={'$backgroundSoft'}>
+          <Paragraph color="$color" jc="center">
+            {colorScheme}
+          </Paragraph>
+          <StatusBar style="auto" />
+        </YStack>
+        <Button size="$6" circular={ true }>Lorem ipsum</Button>
+      </Theme> */}
+    </TamaguiProvider>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
-  },
-});

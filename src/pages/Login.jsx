@@ -1,7 +1,8 @@
 import { View, Text, TextInput, Alert, Button } from 'react-native'
 import React, { useState } from 'react'
 
-import  { getUser, fetchAPI } from '../services/fetchAPI'
+import  { getUser, fetchAPI } from '../../services/fetchAPI'
+import { Link } from 'expo-router'
 
 export default function Login() {
   const [ emailInput, setEmailInput ] = useState('')
@@ -43,14 +44,16 @@ export default function Login() {
         secureTextEntry={ true }
         accessibilityLabel='Digite a sua senha'
       />
-    <Button
-        onPress={ () => getUser(setApiOutput)}
-        title='Login'
-        // color="#841584"
-        accessibilityLabel='Botão para fazer o login'
-        // disabled={ (!validEmail) }
-    />
-    
+    <Link href="/products" asChild>
+      <Button
+          onPress={ () => getUser(setApiOutput)}
+          title='Login'
+          // color="#841584"
+          accessibilityLabel='Botão para fazer o login'
+          // disabled={ (!validEmail) }
+      />
+    </Link>
+    <Link href="MODELO-DE-COMO-USAR-O-LINK" asChild>
     <Button
         onPress={ async () => { // Teste da lista produtos
           const API = await fetchAPI('https://dummyjson.com/products')
@@ -59,6 +62,8 @@ export default function Login() {
         title='lista de produtos'
         accessibilityLabel='Botão para fazer o login'
     />
+    </Link>
+
         { // Campo apenas para testar se o retorno da API funciona corretamente
           (apiOutput.email) && (
             <View>
