@@ -1,6 +1,7 @@
 import { View, Text, TextInput, Alert, Button } from 'react-native'
 import React, { useState } from 'react'
-import axios from 'axios'
+
+import  { getUser, fetchAPI } from '../services/fetchAPI'
 
 export default function Login() {
   const [ emailInput, setEmailInput ] = useState('')
@@ -17,26 +18,6 @@ export default function Login() {
     }
   };
 
-  const getUser = () => {
-    axios.post('https://dummyjson.com/auth/login', {
-    username: 'kminchelle',
-    password: '0lelplR',
-    // expiresInMins: 60, // opcional
-  }, {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(response => {
-      // Manipular a resposta do servidor
-      console.log(response.data);
-      setApiOutput(response.data)
-    })
-    .catch(error => {
-      // Lidar com erros
-      console.error(error);
-    });
-  }
 
   return (
     <View>
@@ -63,17 +44,22 @@ export default function Login() {
         accessibilityLabel='Digite a sua senha'
       />
     <Button
-        onPress={ () => {
-          Alert.alert('Logando')
-          console.log('OOOOOOOOOIII');
-          getUser()
-        }}
+        onPress={ () => getUser(setApiOutput)}
         title='Login'
         // color="#841584"
         accessibilityLabel='Botão para fazer o login'
         // disabled={ (!validEmail) }
-/>
-        {
+    />
+    
+    <Button
+        onPress={ async () => { // Teste da lista produtos
+          const API = await fetchAPI('https://dummyjson.com/products')
+          console.log(API);
+        }}
+        title='lista de produtos'
+        accessibilityLabel='Botão para fazer o login'
+    />
+        { // Campo apenas para testar se o retorno da API funciona corretamente
           (apiOutput.email) && (
             <View>
               <TextInput>{apiOutput.id}</TextInput>

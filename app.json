@@ -1,5 +1,10 @@
 {
   "expo": {
+    "scheme": "myapp",
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
     "name": "ydooc-challenge",
     "slug": "ydooc-challenge",
     "version": "1.0.0",
@@ -22,9 +27,6 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     }
   }
 }

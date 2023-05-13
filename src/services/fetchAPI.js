@@ -1,5 +1,28 @@
-export default async function fetchAPI(url) {
+import axios from 'axios';
+
+export const getUser = (setApiOutput) => {
+  axios.post('https://dummyjson.com/auth/login', {
+  username: 'kminchelle',
+  password: '0lelplR',
+  // expiresInMins: 60, // opcional
+}, {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+  .then(response => {
+    // Manipular a resposta do servidor
+    console.log(response.data);
+    setApiOutput(response.data)
+  })
+  .catch(error => {
+    // Lidar com erros
+    console.error(error);
+  });
+}
+
+
+export const fetchAPI = async (url) => {
   const data = await fetch(url);
-  const response = await data.json();
-  return response;
+  return await data.json();
 }
