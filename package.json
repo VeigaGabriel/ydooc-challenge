@@ -9,10 +9,21 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@tamagui/animations-react-native": "^1.27.3",
+    "@tamagui/babel-plugin": "^1.27.3",
+    "@tamagui/config": "^1.27.3",
+    "@tamagui/font-inter": "^1.27.3",
+    "@tamagui/theme-base": "^1.27.3",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.4",
     "expo": "~48.0.15",
+    "expo-font": "^11.1.1",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
-    "react-native": "0.71.7"
+    "react-dom": "^18.2.0",
+    "react-native": "0.71.7",
+    "react-native-reanimated": "~2.14.4",
+    "react-native-web": "^0.19.4",
+    "tamagui": "^1.27.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
