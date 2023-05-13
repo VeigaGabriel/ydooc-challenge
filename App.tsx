@@ -6,7 +6,7 @@ import { Paragraph, Spacer, TamaguiProvider, Theme, YStack } from 'tamagui'
 import { Button } from 'tamagui'
 
 import config from './tamagui.config'
-import Login from './src/pages/Login'
+import Login from './app/Login'
 
 export default function App() {
   const colorScheme = useColorScheme()

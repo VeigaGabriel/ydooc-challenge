@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getUser = (setApiOutput) => {
   axios.post('https://dummyjson.com/auth/login', {
-  username: 'kminchelle',
+  username: 'kminchellee',
   password: '0lelplR',
   // expiresInMins: 60, // opcional
 }, {

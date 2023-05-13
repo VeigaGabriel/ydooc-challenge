@@ -3,20 +3,15 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'expo-router';
 
 import { fetchAPI } from '../../services/fetchAPI'
+import { pink } from '@tamagui/theme-base';
 
 export default function Products() {
   const [ productList, setProductList ] = useState([])
   useEffect(() => {
-    console.log('EXECUTANDOOOOOOOOOOOOOOOOO');
     (async () => {
       const API = await fetchAPI('https://dummyjson.com/products')
-      console.log('API');
-      console.log(API.products);
       setProductList(API.products)
       if (productList.length > 0) {
-        console.log('SIIIIIIMMM');
-        console.log(productList.length);
-        console.log(productList[0].thumbnail);
       }
 
     })();
@@ -26,7 +21,7 @@ export default function Products() {
       {
         (productList.length > 0) && productList.map( p => (
           <View key={p.id}>
-          <Link href={`/products/${p.id}`}>
+          <Link href={`/products/details`}>
             <View>
               <Image source={{ uri: p.thumbnail }} style={{width: 200, height: 200}}/>
               <Text>{p.id}</Text>
@@ -39,11 +34,9 @@ export default function Products() {
               <Text></Text>
             </View>
           </Link>
-            </View>
+          </View>
+          ))}
 
-          )
-        )
-      }
     </ScrollView>
   )
 };

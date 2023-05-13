@@ -1,7 +1,7 @@
 import { View, Text, TextInput, Alert, Button } from 'react-native'
 import React, { useState } from 'react'
 
-import  { getUser, fetchAPI } from '../../services/fetchAPI'
+import  { getUser, fetchAPI } from '../services/fetchAPI'
 import { Link } from 'expo-router'
 
 export default function Login() {
@@ -19,7 +19,6 @@ export default function Login() {
     }
   };
 
-
   return (
     <View>
       <Text>NOME/LOGO DA EMPRESA</Text>
@@ -28,7 +27,6 @@ export default function Login() {
         onChangeText={ (target) => {
           setEmailInput(target)
           validateEmail(target)
-          console.log(validEmail);
         } }
         value={ emailInput }
         placeholder='Email'
@@ -53,17 +51,6 @@ export default function Login() {
           // disabled={ (!validEmail) }
       />
     </Link>
-    <Link href="MODELO-DE-COMO-USAR-O-LINK" asChild>
-    <Button
-        onPress={ async () => { // Teste da lista produtos
-          const API = await fetchAPI('https://dummyjson.com/products')
-          console.log(API);
-        }}
-        title='lista de produtos'
-        accessibilityLabel='Botão para fazer o login'
-    />
-    </Link>
-
         { // Campo apenas para testar se o retorno da API funciona corretamente
           (apiOutput.email) && (
             <View>

@@ -6,7 +6,7 @@ import { Paragraph, Spacer, TamaguiProvider, Theme, YStack } from 'tamagui'
 import { Button } from 'tamagui'
 
 import config from '../tamagui.config'
-import Login from '../src/pages/Login'
+import Login from './Login'
 import { Link } from 'expo-router'
 
 export default function App() {
