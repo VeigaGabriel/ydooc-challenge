@@ -6,6 +6,7 @@ import { Paragraph, Spacer, TamaguiProvider, Theme, YStack } from 'tamagui'
 import { Button } from 'tamagui'
 
 import config from './tamagui.config'
+import Login from './src/pages/Login'
 
 export default function App() {
   const colorScheme = useColorScheme()
@@ -21,7 +22,8 @@ export default function App() {
 
   return (
     <TamaguiProvider config={config}>
-      <Theme name={colorScheme === 'dark' ? 'dark' : 'light'}>
+      <Login />
+      {/* <Theme name={colorScheme === 'dark' ? 'dark' : 'light'}>
         <YStack f={1} jc="center" ai="center" backgroundColor={'$backgroundSoft'}>
           <Paragraph color="$color" jc="center">
             {colorScheme}
@@ -29,7 +31,7 @@ export default function App() {
           <StatusBar style="auto" />
         </YStack>
         <Button size="$6" circular={ true }>Lorem ipsum</Button>
-      </Theme>
+      </Theme> */}
     </TamaguiProvider>
   )
 }

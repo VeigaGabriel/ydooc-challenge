@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "new-app",
-    "slug": "new-app",
+    "name": "ydooc-challenge",
+    "slug": "ydooc-challenge",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
