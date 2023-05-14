@@ -2,6 +2,7 @@ import { useFonts } from 'expo-font'
 import { StatusBar } from 'expo-status-bar'
 import { useColorScheme } from 'react-native'
 import { Paragraph, Spacer, TamaguiProvider, Theme, YStack } from 'tamagui'
+import styles from './Styles'
 
 import { Button } from 'tamagui'
 
@@ -24,7 +25,6 @@ export default function App() {
   return (
     <TamaguiProvider config={config}>
       <Login />
-      <Link href="/">Login</Link>
       {/* <Theme name={colorScheme === 'dark' ? 'dark' : 'light'}>
         <YStack f={1} jc="center" ai="center" backgroundColor={'$backgroundSoft'}>
           <Paragraph color="$color" jc="center">

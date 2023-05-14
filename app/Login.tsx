@@ -70,7 +70,7 @@ export default function Login() {
           accessibilityLabel='Digite a sua senha'
         />
       {/* </View> */}
-    {/* <Link href="/products" asChild> */}
+    <Link href="/products" asChild>
       <Button
         accessibilityLabel='Botão para fazer o login'
         backgroundColor={'black'}
@@ -84,7 +84,7 @@ export default function Login() {
       >
         Login
       </Button>
-    {/* </Link> */}
+    </Link>
       {/* <LinearGradient
         // Button Linear Gradient
         colors={['black', 'rgb(255 0 128)']}
