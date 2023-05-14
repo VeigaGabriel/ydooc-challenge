@@ -2,21 +2,18 @@ import { View, TextInput, Text } from 'react-native'
 import React, { useState } from 'react'
 import { Link, Redirect } from 'expo-router'
 import styles from './Styles'
-// import { Activity, Airplay } from '@tamagui/lucide-icons'
-import { Button, H1, Input, SizeTokens, TextArea, XStack, YStack } from 'tamagui'
-import { LinearGradient } from 'expo-linear-gradient';
+// import { LinearGradient } from 'expo-linear-gradient';
+import { Button } from 'tamagui'
 import  { getUser } from '../src/services/fetchDummyAPI'
+import { useFonts } from 'expo-font';
 
-import { useFonts, LilitaOne_400Regular } from 'expo-font';
-import { AppLoading } from 'expo';
-
-import { IProductListProps } from '../src/components/ProductList'
+import { IPeopleInfo } from '../src/services/fetchDummyAPI'
 
 export default function Login() {
   const [ emailInput, setEmailInput ] = useState('')
   const [ passInput, setPassInput ] = useState('')
   const [ validEmail, setValidEmail ] = useState(false)
-  const [apiOutput, setApiOutput ] = useState<IProductListProps[]>([])
+  const [apiOutput, setApiOutput ] = useState<IPeopleInfo>({} as IPeopleInfo)
 
   const [fontsLoaded] = useFonts({
     'LilitaOne-Regular': require('../assets/fonts/LilitaOne-Regular.ttf'),
@@ -26,7 +23,7 @@ export default function Login() {
     return null;
   }
 
-  validateEmail = (email) => {
+  const validateEmail = ( email: string ) => {
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       setValidEmail(true)
     } else {
@@ -39,7 +36,7 @@ export default function Login() {
     style={{flex: 1, 
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'black',
+    // backgroundColor: 'black',
     }}>
       <Text style={{
         fontFamily: 'LilitaOne-Regular',
@@ -54,7 +51,7 @@ export default function Login() {
           style={styles.textInput}
           onChangeText={ (target) => {
             setEmailInput(target)
-            validateEmail(target)
+            // validateEmail(target)
           } }
           value={ emailInput }
           placeholderTextColor="white"
@@ -73,21 +70,21 @@ export default function Login() {
           accessibilityLabel='Digite a sua senha'
         />
       {/* </View> */}
-    <Link href="/products" asChild>
+    {/* <Link href="/products" asChild> */}
       <Button
         accessibilityLabel='Botão para fazer o login'
-        backgroundColor={['black']}
+        backgroundColor={'black'}
         color={'white'}
         borderColor='$pink10Dark'
         borderRadius={8}
-        onPress={ () => getUser(setApiOutput)}
+        onPress={ async () => setApiOutput(await getUser({username: 'kminchelle', password: '0lelplR'})) }
         size="$6"
         marginTop={'20%'}
         // disabled={ (!validEmail) }
       >
         Login
       </Button>
-    </Link>
+    {/* </Link> */}
       {/* <LinearGradient
         // Button Linear Gradient
         colors={['black', 'rgb(255 0 128)']}
