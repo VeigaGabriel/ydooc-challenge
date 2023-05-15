@@ -17,11 +17,11 @@ const infos = {
   token: '',
 }
 
-export const usePeopleInfo = create ( (set) => ({
+export const usePeopleInfo = create<State>((set) => ({
   user: {
     ...infos
   },
-    addPeopleInfo: ( user: any ) => { // CONSERTAR user: any
+    addPeopleInfo: ( user: IPeopleInfo ) => {
     set(( state: State ) => ( { user }))
   }
 }))

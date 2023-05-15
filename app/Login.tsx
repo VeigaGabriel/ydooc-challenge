@@ -1,34 +1,33 @@
 import { View, TextInput, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'expo-router';
+import { Link, Redirect, Stack, useRouter } from 'expo-router';
 
 import { useFonts } from 'expo-font';
 import styles from './Styles';
 import { Button } from 'tamagui';
 
 import  { getUser } from '../src/services/fetchDummyAPI';
-// import { IPeopleInfo } from '../src/services/fetchDummyAPI';
 import { usePeopleInfo } from '../src/services/usePeopleInfo';
 
 
 export default function Login() {
   const [ usernameInput, setUsernameInput ] = useState('');
   const [ passInput, setPassInput ] = useState('');
-  const [ validEmail, setValidEmail ] = useState(false);
-  // const [apiOutput, setApiOutput ] = useState<IPeopleInfo>({} as IPeopleInfo);
 
-    // --------- TESTANDO ZUSTAND ------------------ //
-  const TESTANDO_FUNCAO_ZUSTAND = async () => {
-    const changePeopleInfo = usePeopleInfo( state => state.addPeopleInfo );
+  const router = useRouter();
+
+  const handleRedirect = ( directory: string ) => {
+    router.push(directory)
+  };
+
+  const changePeopleInfo = usePeopleInfo( state => state.addPeopleInfo );
+  const loginUserVerify = async () => {
     const retornoAPI = await getUser({ username: 'kminchelle', password: '0lelplR' });
-    console.warn(retornoAPI);
+    // console.warn('*************************', retornoAPI);
     // delete retornoAPI.nomeDaChave;
-    // changePeopleInfo( retornoAPI );
+    changePeopleInfo( retornoAPI );
   }
-  // TESTANDO_FUNCAO_ZUSTAND();
 
-    // const peopleInfo = usePeopleInfo(state => state.user); // PARA RESGATAR AS INFORMAÇÕES DO ESTADO
-  //----------------------------------------------//
   const [fontsLoaded] = useFonts({
     'LilitaOne-Regular': require('../assets/fonts/LilitaOne-Regular.ttf'),
   });
@@ -48,30 +47,31 @@ export default function Login() {
           placeholder='Usuário'
           accessibilityLabel='Digite o seu email'
         />
-
+        {/* <Stack.Screen options={ { title: 'Home' } } /> */}
         <TextInput
           style={styles.textInput}
           onChangeText={ (target) => setPassInput(target) }
           value={ passInput }
           placeholderTextColor="white"
           placeholder='Senha'
-          secureTextEntry={ true }
+          secureTextEntry
           accessibilityLabel='Digite a sua senha'
         />
-    <Link href="/products" asChild>
       <Button
         accessibilityLabel='Botão para fazer o login'
         backgroundColor={'black'}
         color={'white'}
         borderColor='$pink10Dark'
         borderRadius={8}
-        // onPress={ async () => setApiOutput(await getUser({username: 'kminchelle', password: '0lelplR'})) }
+        onPress={ () => {
+          loginUserVerify();
+          handleRedirect('/products');
+        } }
         size="$6"
         marginTop={'20%'}
       >
         Login
       </Button>
-    </Link>
     </View>
   );
 };
