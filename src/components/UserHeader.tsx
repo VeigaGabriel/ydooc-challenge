@@ -1,7 +1,7 @@
 import { View, TextInput } from 'react-native'
 import React from 'react'
 
-import { IPeopleInfo } from '../models/IPeopleInfo';
+import { IPeopleInfo } from '../interfaces/IPeopleInfo';
 import { usePeopleInfo } from '../services/usePeopleInfo';
 
 export default function UserHeader({

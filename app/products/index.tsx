@@ -7,15 +7,14 @@ import UserHeader from '../../src/components/UserHeader';
 import { IProductProps } from '../../src/components/Product';
 
 import { usePeopleInfo } from '../../src/services/usePeopleInfo';
+import { Link } from 'expo-router';
 
 export default function Products() {
-  const [ productList, setProductList ] = useState<IProductProps[]>([])
+  const [ productList, setProductList ] = useState<IProductProps[]>([]);
   useEffect(() => {
     (async () => {
-      const API = await fetchAPI('https://dummyjson.com/products')
-      setProductList(API.products)
-      if (productList.length > 0) {
-      }
+      const API = await fetchAPI('https://dummyjson.com/products');
+      setProductList(API.products);
     })();
   }, [])
 
@@ -36,7 +35,7 @@ export default function Products() {
         />
       {
         (productList.length > 0) && productList.map( p => (
-          <Product { ...p } key={ p.id }/>
+            <Product { ...p } key={ p.id }/>
           ))
       }
     </ScrollView>

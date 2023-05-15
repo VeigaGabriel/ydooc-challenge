@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { IPeopleInfo } from '../models/IPeopleInfo';
+import { IPeopleInfo } from '../interfaces/IPeopleInfo';
 
 interface IGetUserProps {
   username: string;
@@ -8,7 +8,7 @@ interface IGetUserProps {
 }
 
 
-export const getUser = async ({ username,password }: IGetUserProps): Promise<IPeopleInfo> => {
+export const getUser = async ({ username, password }: IGetUserProps): Promise<IPeopleInfo> => {
   try {
     const response = await axios.post('https://dummyjson.com/auth/login', {
       username,

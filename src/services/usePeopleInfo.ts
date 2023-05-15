@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { IPeopleInfo } from "../models/IPeopleInfo";
+import { IPeopleInfo } from "../interfaces/IPeopleInfo";
 
 type State = {
   user: IPeopleInfo;
@@ -25,22 +25,3 @@ export const usePeopleInfo = create<State>((set) => ({
     set(( state: State ) => ( { user }))
   }
 }))
-
-
-// interface UserType {
-//   name: string;
-//   email: string;
-// }
-
-// type State = {
-//   users: UserType[];
-//   addUser: (user: UserType) => void;
-// }
-
-// export const useTest = create<State>((set) => ({
-//   users: [],
-
-//   addUser: ( user: UserType ) => {
-//     set(state => ( { users: [ ...state.users, user ]}))
-//   }
-// }))
