@@ -1,21 +1,11 @@
 import { StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
 
 const styles = StyleSheet.create({
-  container: {
-    // alignItems: 'center',
-    // backgroundColor: 'red',
-    flex: 1,
+  loginBody: {
+    flex: 1, 
+    alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    padding: 8,
-
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    backgroundColor: 'black',
   },
 
   textInput: {
@@ -33,7 +23,7 @@ const styles = StyleSheet.create({
     fontFamily: 'LilitaOne-Regular',
     fontSize: 65,
     color: 'rgb(255 0 128)',
-    marginBottom: 50,
+    marginBottom: 50
   },
   
 });

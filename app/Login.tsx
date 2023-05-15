@@ -1,33 +1,33 @@
-import { View, TextInput, Text } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { Link } from 'expo-router'
+import { View, TextInput, Text } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'expo-router';
 
 import { useFonts } from 'expo-font';
-import styles from './Styles'
-import { Button } from 'tamagui'
+import styles from './Styles';
+import { Button } from 'tamagui';
 
-import  { getUser } from '../src/services/fetchDummyAPI'
-// import { IPeopleInfo } from '../src/services/fetchDummyAPI'
-import { usePeopleInfo } from '../src/services/usePeopleInfo'
+import  { getUser } from '../src/services/fetchDummyAPI';
+// import { IPeopleInfo } from '../src/services/fetchDummyAPI';
+import { usePeopleInfo } from '../src/services/usePeopleInfo';
 
 
 export default function Login() {
-  const [ usernameInput, setUsernameInput ] = useState('')
-  const [ passInput, setPassInput ] = useState('')
-  const [ validEmail, setValidEmail ] = useState(false)
-  // const [apiOutput, setApiOutput ] = useState<IPeopleInfo>({} as IPeopleInfo)
+  const [ usernameInput, setUsernameInput ] = useState('');
+  const [ passInput, setPassInput ] = useState('');
+  const [ validEmail, setValidEmail ] = useState(false);
+  // const [apiOutput, setApiOutput ] = useState<IPeopleInfo>({} as IPeopleInfo);
 
     // --------- TESTANDO ZUSTAND ------------------ //
   const TESTANDO_FUNCAO_ZUSTAND = async () => {
     const changePeopleInfo = usePeopleInfo( state => state.addPeopleInfo );
-    const retornoAPI = await getUser({ username: 'kminchelle', password: '0lelplR' })
+    const retornoAPI = await getUser({ username: 'kminchelle', password: '0lelplR' });
     console.warn(retornoAPI);
     // delete retornoAPI.nomeDaChave;
     // changePeopleInfo( retornoAPI );
   }
-  // TESTANDO_FUNCAO_ZUSTAND()
+  // TESTANDO_FUNCAO_ZUSTAND();
 
-    // const peopleInfo = usePeopleInfo(state => state.user) // PARA RESGATAR AS INFORMAÇÕES DO ESTADO
+    // const peopleInfo = usePeopleInfo(state => state.user); // PARA RESGATAR AS INFORMAÇÕES DO ESTADO
   //----------------------------------------------//
   const [fontsLoaded] = useFonts({
     'LilitaOne-Regular': require('../assets/fonts/LilitaOne-Regular.ttf'),
@@ -35,24 +35,11 @@ export default function Login() {
   if (!fontsLoaded) return null;
 
   return (
-    <View 
-    style={{
-    flex: 1, 
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'black',
-    }}>
-      <Text style={{
-        fontFamily: 'LilitaOne-Regular',
-        fontSize: 65,
-        color: 'rgb(255 0 128)',
-        marginBottom: 50
-        }}>
-          Y D O O C
-        </Text>
-
+    <View
+    style={ styles.loginBody }>
+      <Text style={ styles.logo }> Y D O O C </Text>
         <TextInput
-          style={styles.textInput}
+          style={ styles.textInput }
           onChangeText={ (target) => {
             setUsernameInput(target)
           } }
@@ -62,7 +49,7 @@ export default function Login() {
           accessibilityLabel='Digite o seu email'
         />
 
-        <TextInput 
+        <TextInput
           style={styles.textInput}
           onChangeText={ (target) => setPassInput(target) }
           value={ passInput }
@@ -86,5 +73,5 @@ export default function Login() {
       </Button>
     </Link>
     </View>
-  )
-}
+  );
+};
