@@ -1,6 +1,6 @@
 import { View, TextInput, Text } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { Link, Redirect, Stack, useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { Stack, useRouter } from 'expo-router';
 
 import { useFonts } from 'expo-font';
 import styles from './Styles';
@@ -23,7 +23,6 @@ export default function Login() {
   const changePeopleInfo = usePeopleInfo( state => state.addPeopleInfo );
   const loginUserVerify = async () => {
     const retornoAPI = await getUser({ username: 'kminchelle', password: '0lelplR' });
-    // console.warn('*************************', retornoAPI);
     // delete retornoAPI.nomeDaChave;
     changePeopleInfo( retornoAPI );
   }
@@ -47,7 +46,7 @@ export default function Login() {
           placeholder='Usuário'
           accessibilityLabel='Digite o seu email'
         />
-        {/* <Stack.Screen options={ { title: 'Home' } } /> */}
+        <Stack.Screen options={ { title: 'Home' } } />
         <TextInput
           style={styles.textInput}
           onChangeText={ (target) => setPassInput(target) }

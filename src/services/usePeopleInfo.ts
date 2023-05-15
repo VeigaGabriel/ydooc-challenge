@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { IPeopleInfo } from "./fetchDummyAPI";
+import { IPeopleInfo } from "../models/IPeopleInfo";
 
 type State = {
   user: IPeopleInfo;
