@@ -12,6 +12,8 @@ export interface IPeopleInfo {
   firstName: string;
   lastName: string;
   gender: string;
+  image: string;
+  token: string;
 }
 
 export const getUser = async ({ username,password }: IGetUserProps): Promise<IPeopleInfo> => {
