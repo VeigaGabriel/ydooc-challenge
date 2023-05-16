@@ -31,7 +31,8 @@
     "react-native-screens": "~3.20.0",
     "react-native-web": "~0.18.10",
     "tamagui": "^1.27.3",
-    "zustand": "^4.3.8"
+    "zustand": "^4.3.8",
+    "@react-native-async-storage/async-storage": "1.17.11"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
