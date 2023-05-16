@@ -15,5 +15,6 @@ export const useHandleChange = create<InputState>((set) => ({
     else { console.warn('Parâmetro errado') };
   },
 }))
+
 // const [ handleInput, username, password ] = useHandleChange(state => [
 //   state.handleInput, state.username, state.password ]);

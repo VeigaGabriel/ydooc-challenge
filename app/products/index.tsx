@@ -1,21 +1,20 @@
 import { ScrollView  } from 'react-native';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import { Stack } from 'expo-router';
 
 import UserHeader from '../../src/components/UserHeader';
-import { fetchAPI } from '../../src/services/fetchDummyAPI'
 import { Product } from '../../src/components/Product';
 import { usePeopleInfo } from '../../src/services/usePeopleInfo';
-import { useProductInfo } from '../../src/services/useProductInfo';
-import { IProductInfo } from '../../src/interfaces/IProductInfo';
+import { useListProducts } from '../../src/services/useListProducts';
 
 export default function Products() {
-  const [ productList, setProductList ] = useState<IProductInfo[]>([]);
+  // const [ productList, setProductList ] = useState<IProductInfo[]>([]);
+  const [ fetchProducts, products ] = useListProducts((state) => [ 
+    state.fetchProducts, state.products
+  ]);
 
   useEffect(() => {
-    (async () => {
-      const API = await fetchAPI('https://dummyjson.com/products');
-      setProductList(API.products);
-    })();
+    fetchProducts();
   }, [])
 
   const peopleInfo = usePeopleInfo(state => state.user);
@@ -23,6 +22,7 @@ export default function Products() {
 
   return (
     <ScrollView>
+      <Stack.Screen options={ { title: 'Produtos' } } />
       <UserHeader
         id={id}
         username={username}
@@ -34,7 +34,7 @@ export default function Products() {
         token={token}
         />
       {
-        (productList.length > 0) && productList.map( p => (
+        (products.length > 0) && products.map( p => (
             <Product { ...p } key={ p.id }/>
           ))
       }

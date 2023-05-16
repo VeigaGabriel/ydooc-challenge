@@ -24,7 +24,8 @@ export default function Login() {
   const changePeopleInfo = usePeopleInfo( state => state.addPeopleInfo );
   const loginUserVerify = async () => {
     try {
-      const retornoAPI = await getUser({ username, password });
+      // const retornoAPI = await getUser({ username, password });
+      const retornoAPI = await getUser({ username: 'kminchelle', password:'0lelplR' });
       changePeopleInfo( retornoAPI );
       handleRedirect('/products');
       // delete retornoAPI.nomeDaChave;
@@ -51,7 +52,6 @@ export default function Login() {
             handleInput(value, 'username')
           }}
           value={ username }
-          // value='kminchelle'
           placeholderTextColor="white"
           placeholder='Usuário'
           accessibilityLabel='Digite o seu nome de login'
@@ -63,7 +63,6 @@ export default function Login() {
             handleInput(value, 'password');
           }}
           value={ password }
-          // value='0lelplR'
           placeholderTextColor="white"
           placeholder='Senha'
           secureTextEntry
