@@ -1,13 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { Alert } from "react-native";
 
-const ERROR_ALERT = Alert.alert('Ocorreu um erro:', (e as Error).message );
+const ERROR_ALERT = (e: Error) => Alert.alert('Ocorreu um erro:', (e).message );
 
 export const saveStorage = async ( storageName: string, value: string ) => {
   try {
     await AsyncStorage.setItem(`@${ storageName }`, value)
   } catch (e) {
-    ERROR_ALERT;
+    ERROR_ALERT(e as Error);
   }
 }
 
@@ -18,7 +18,7 @@ export const loadStorage = async ( storageName: string ) => {
       return value;
     }
   } catch(e) {
-    ERROR_ALERT;
+    ERROR_ALERT(e as Error);
   }
 }
 
@@ -26,6 +26,6 @@ export const removeStorage = async ( storageName: string ) => {
   try {
     await AsyncStorage.removeItem( `@${ storageName }`);
   } catch (e) {
-    ERROR_ALERT;
+    ERROR_ALERT(e as Error);
     }
 };
