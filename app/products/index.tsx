@@ -1,16 +1,16 @@
 import { ScrollView  } from 'react-native';
 import React, { useEffect, useState } from 'react'
 
+import UserHeader from '../../src/components/UserHeader';
 import { fetchAPI } from '../../src/services/fetchDummyAPI'
 import { Product } from '../../src/components/Product';
-import UserHeader from '../../src/components/UserHeader';
-import { IProductProps } from '../../src/components/Product';
-
 import { usePeopleInfo } from '../../src/services/usePeopleInfo';
-import { Link } from 'expo-router';
+import { useProductInfo } from '../../src/services/useProductInfo';
+import { IProductInfo } from '../../src/interfaces/IProductInfo';
 
 export default function Products() {
-  const [ productList, setProductList ] = useState<IProductProps[]>([]);
+  const [ productList, setProductList ] = useState<IProductInfo[]>([]);
+
   useEffect(() => {
     (async () => {
       const API = await fetchAPI('https://dummyjson.com/products');

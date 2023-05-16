@@ -20,7 +20,7 @@ const infos = {
   images: [''],
 }
 
-export const usePeopleInfo = create<State>((set) => ({
+export const useProductInfo = create<State>((set) => ({
   product: {
     ...infos
   },
