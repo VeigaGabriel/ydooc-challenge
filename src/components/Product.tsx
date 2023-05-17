@@ -58,6 +58,7 @@ export function Product( {
             // borderWidth: 4,      // WARNING
             // borderColor: 'black',// !!
             }}
+            resizeMode='cover'
             // width={150}
             // height={'100%'}
             // borderTopLeftRadius={11}
@@ -68,7 +69,7 @@ export function Product( {
           <YStack 
             px="$2"
             padding={'$2'}
-            width={'$17'}
+            width={'$16'}
             height={ '100%'}
             borderTopRightRadius={'$6'}
             borderBottomRightRadius={ '$6'}
