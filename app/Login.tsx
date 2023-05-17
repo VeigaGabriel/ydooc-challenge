@@ -1,5 +1,5 @@
 import { View, TextInput, Text, Alert } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Stack, useRouter } from 'expo-router';
 
 import { useFonts } from 'expo-font';
@@ -9,11 +9,26 @@ import { Button } from 'tamagui';
 import  { getUser } from '../src/services/fetchDummyAPI';
 import { usePeopleInfo } from '../src/services/usePeopleInfo';
 import { useHandleChange } from '../src/services/useHandleChange';
+import { loadStorage, saveStorage } from '../src/services/storageFuncs';
 
 export default function Login() {
   const [ handleInput, username, password ] = useHandleChange(state => [
     state.handleInput, state.username, state.password
   ]);
+
+  useEffect(() => {
+    (async () => {
+      const usernameStorage = await loadStorage('username');
+      const passwordStorage = await loadStorage('password');
+      
+      if (usernameStorage && passwordStorage) {
+        handleInput(usernameStorage, 'username');
+        handleInput(passwordStorage, 'password');
+        
+        loginUserVerify(usernameStorage, passwordStorage);
+      }
+    })();
+  }, [])
 
   const router = useRouter();
 
@@ -22,11 +37,15 @@ export default function Login() {
   };
 
   const changePeopleInfo = usePeopleInfo( state => state.addPeopleInfo );
-  const loginUserVerify = async () => {
+  const loginUserVerify = async (user: string, pass: string) => {
     try {
-      // const retornoAPI = await getUser({ username, password });
-      const retornoAPI = await getUser({ username: 'kminchelle', password:'0lelplR' });
-      changePeopleInfo( retornoAPI );
+      console.log('@@@@', user, pass);
+      console.log('####',username, password)
+      const retornoAPI = await getUser({ username: user, password: pass });
+      // const retornoAPI = await getUser({ username: 'kminchelle', password:'0lelplR' });
+      saveStorage('username', username);
+      saveStorage('password', password);
+      changePeopleInfo(retornoAPI);
       handleRedirect('/products');
       // delete retornoAPI.nomeDaChave;
     } catch (e: unknown) {
@@ -74,7 +93,7 @@ export default function Login() {
         color={'white'}
         borderColor='$pink10Dark'
         borderRadius={8}
-        onPress={ loginUserVerify }
+        onPress={ () => loginUserVerify(username, password) }
         size="$6"
         marginTop={'20%'}
       >

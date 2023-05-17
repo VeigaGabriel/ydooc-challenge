@@ -5,7 +5,7 @@ const ERROR_ALERT = (e: Error) => Alert.alert('Ocorreu um erro:', (e).message );
 
 export const saveStorage = async ( storageName: string, value: string ) => {
   try {
-    await AsyncStorage.setItem(`@${ storageName }`, value)
+    await AsyncStorage.setItem(`@${ storageName }`, value);
   } catch (e) {
     ERROR_ALERT(e as Error);
   }
@@ -13,10 +13,8 @@ export const saveStorage = async ( storageName: string, value: string ) => {
 
 export const loadStorage = async ( storageName: string ) => {
   try {
-    let value = await AsyncStorage.getItem(`@${ storageName }`)
-    if(value !== null) {
-      return value;
-    }
+    const value = await AsyncStorage.getItem(`@${ storageName }`);
+    return value;
   } catch(e) {
     ERROR_ALERT(e as Error);
   }
