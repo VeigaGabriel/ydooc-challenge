@@ -1,7 +1,6 @@
-import { ScrollView  } from 'react-native';
 import React, { useEffect } from 'react'
 import { Stack } from 'expo-router';
-import { TamaguiProvider } from 'tamagui';
+import { ScrollView, TamaguiProvider } from 'tamagui';
 import config from '../../tamagui.config';
 
 import UserHeader from '../../src/components/UserHeader';
@@ -22,7 +21,7 @@ export default function Products() {
   const { id, username, email, firstName, lastName, gender, image, token } = peopleInfo;
   return (
     <TamaguiProvider config={config}>
-      <ScrollView>
+      <ScrollView backgroundColor={'$purple12'}>
         <Stack.Screen options={ { title: 'Produtos' } } />
         {/* <UserHeader
           id={id}
