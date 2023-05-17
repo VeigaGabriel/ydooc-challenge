@@ -23,7 +23,7 @@ export default function Products() {
     <TamaguiProvider config={config}>
       <ScrollView backgroundColor={'$purple12'}>
         <Stack.Screen options={ { title: 'Produtos' } } />
-        {/* <UserHeader
+        <UserHeader
           id={id}
           username={username}
           email={email}
@@ -32,7 +32,7 @@ export default function Products() {
           gender={gender}
           image={image}
           token={token}
-          /> */}
+          />
         {
           (products.length > 0) && products.map( p => (
               <Product { ...p } key={ p.id }/>

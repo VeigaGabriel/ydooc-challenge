@@ -23,8 +23,7 @@ export default function Login() {
       
       if (usernameStorage && passwordStorage) {
         handleInput(usernameStorage, 'username');
-        handleInput(passwordStorage, 'password');
-        
+        handleInput(passwordStorage, 'password');   
         loginUserVerify(usernameStorage, passwordStorage);
       }
     })();
@@ -60,9 +59,7 @@ export default function Login() {
     'LilitaOne-Regular': require('../assets/fonts/LilitaOne-Regular.ttf'),
   });
   if (!fontsLoaded) return null;
-
-  handleRedirect('/products'); // APENAS PARA DESENVOLVIMENTO ***************
-
+  
   return (
     <View
     style={ styles.loginBody }>
