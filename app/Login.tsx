@@ -15,7 +15,7 @@ export default function Login() {
   const [ handleInput, username, password ] = useHandleChange(state => [
     state.handleInput, state.username, state.password
   ]);
-
+  
   useEffect(() => {
     (async () => {
       const usernameStorage = await loadStorage('username');
@@ -60,6 +60,8 @@ export default function Login() {
     'LilitaOne-Regular': require('../assets/fonts/LilitaOne-Regular.ttf'),
   });
   if (!fontsLoaded) return null;
+
+  handleRedirect('/products'); // APENAS PARA DESENVOLVIMENTO ***************
 
   return (
     <View
