@@ -20,12 +20,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.veigagabriel.ydoocchallenge"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.veigagabriel.ydoocchallenge"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "57013f60-14c9-4a45-906a-ec0f7e17fbe4"
       }
     }
   }
