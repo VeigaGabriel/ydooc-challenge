@@ -51,7 +51,7 @@ export function Product( {
         >
           <Image source={{ uri: thumbnail }} 
           style={{ 
-            width: 150,
+            width: 110,
             height: '100%',
             borderTopLeftRadius: 11,
             borderBottomLeftRadius: 11,
@@ -59,25 +59,21 @@ export function Product( {
             // borderColor: 'black',// !!
             }}
             resizeMode='cover'
-            // width={150}
-            // height={'100%'}
-            // borderTopLeftRadius={11}
-            // borderBottomLeftRadius={11}
-            // borderWidth={4}
-            // borderColor={'black'}
             />
           <YStack 
             px="$2"
             padding={'$2'}
-            width={'$16'}
+            width={'$19'}
             height={ '100%'}
             borderTopRightRadius={'$6'}
             borderBottomRightRadius={ '$6'}
             borderColor={'$purple8'}
             borderWidth='$0.75'
             backgroundColor={'$pink8'}
-            > 
-          <Text fontFamily={'$body'} fontSize={'$8'} color={'$purple12'}>
+            accessibilityLabel='Informações sobre o produto'
+            >
+
+          <Text fontFamily={'$body'} fontSize={'$6'} fontWeight={'bold'} color={'$purple12'}>
             { title } | { rating }
           </Text>
           <Text fontFamily={'$body'} fontSize={'$4'} numberOfLines={3} ellipsizeMode="tail" color={'$purple12'}>

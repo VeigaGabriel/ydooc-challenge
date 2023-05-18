@@ -65,14 +65,14 @@ export default function Login() {
     style={ styles.loginBody }>
       <Text style={ styles.logo }> Y D O O C </Text>
         <TextInput
+          accessibilityLabel='Digite o seu nome de login'
+          placeholder='Usuário'
+          placeholderTextColor="white"
           style={ styles.textInput }
+          value={ username }
           onChangeText={ (value) => {
             handleInput(value, 'username')
           }}
-          value={ username }
-          placeholderTextColor="white"
-          placeholder='Usuário'
-          accessibilityLabel='Digite o seu nome de login'
         />
         <Stack.Screen options={ { title: 'Home' } } />
         <TextInput
@@ -89,12 +89,12 @@ export default function Login() {
       <Button
         accessibilityLabel='Botão para fazer o login'
         backgroundColor={'black'}
-        color={'white'}
         borderColor='$pink10Dark'
         borderRadius={8}
-        onPress={ () => loginUserVerify(username, password) }
+        color={'white'}
         size="$6"
         marginTop={'20%'}
+        onPress={ () => loginUserVerify(username, password) }
       >
         Login
       </Button>
