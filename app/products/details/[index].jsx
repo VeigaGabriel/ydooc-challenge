@@ -23,7 +23,6 @@ export default function Details() {
     images
   } = productInfo;
   const screenWidth = Dimensions.get('window').width;
-  console.log(images);
   return (
     <TamaguiProvider config={config}>
       <ScrollView backgroundColor={ '$purple12'} height={'100%'}>

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { IPeopleInfo } from '../interfaces/IPeopleInfo';
+import { Alert } from 'react-native';
 
 interface IGetUserProps {
   username: string;
@@ -21,10 +22,8 @@ export const getUser = async ({ username, password }: IGetUserProps): Promise<IP
     });
     
     return response.data as IPeopleInfo;
-  } catch (error) {
-    // Lidar com erros
-    console.error(error);
-    throw error;
+  } catch (e) {
+    throw e;
   }
 };
 

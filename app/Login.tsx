@@ -42,10 +42,12 @@ export default function Login() {
       // console.log('####',username, password) ----------
       const retornoAPI = await getUser({ username: user, password: pass });
       // const retornoAPI = await getUser({ username: 'kminchelle', password:'0lelplR' });
-      saveStorage('username', username);
-      saveStorage('password', password);
-      changePeopleInfo(retornoAPI);
-      handleRedirect('/products');
+      if (retornoAPI) {
+        saveStorage('username', username);
+        saveStorage('password', password);
+        changePeopleInfo(retornoAPI);
+        handleRedirect('/products');
+      }
       // delete retornoAPI.nomeDaChave;
     } catch (e: unknown) {
       if( (e as Error).message == 'Request failed with status code 400') {
