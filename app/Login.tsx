@@ -38,8 +38,8 @@ export default function Login() {
   const changePeopleInfo = usePeopleInfo( state => state.addPeopleInfo );
   const loginUserVerify = async (user: string, pass: string) => {
     try {
-      console.log('@@@@', user, pass);
-      console.log('####',username, password)
+      // console.log('@@@@', user, pass); ----------
+      // console.log('####',username, password) ----------
       const retornoAPI = await getUser({ username: user, password: pass });
       // const retornoAPI = await getUser({ username: 'kminchelle', password:'0lelplR' });
       saveStorage('username', username);

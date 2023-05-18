@@ -20,24 +20,33 @@ gender,
 const [ fetchProductsWithSearch ] = useListProducts((state) => [ state.fetchProductsWithSearch ])
   const router = useRouter();
   return (
-      <YStack display='flex' flexDirection='row' justifyContent='space-between' padding={'$3'}>
-        <Text color={'white'}>{ `${firstName} ${lastName}` }</Text>
-        <Input 
-          size={'$2'}
+      <YStack display='flex' flexDirection='row' justifyContent='space-between' padding={'$3'} alignItems='center'>
+        <Text 
+          accessibilityLabel='Nome do usuário'
+          color={'white'}
+          fontFamily={'$heading'}
+          fontSize={'$3'}
+          >
+            { `${firstName} ${lastName}` }
+        </Text>
+        <Input
+          accessibilityLabel='Campo de Pesquisa'
           padding={'$2'}
-          width={'$10'}
+          size={'$2'}
+          width={'$13'}
           onChangeText={ (value) => {
           handleInput(value, 'search')
           }}
           onSubmitEditing={() => fetchProductsWithSearch(search)}
         />
         <Button
-          accessibilityLabel='Botão para fazer o login'
-          backgroundColor={'black'}
-          color={'white'}
-          borderColor='$pink10Dark'
-          borderRadius={1}
-          width={'$10'}
+          accessibilityLabel='Botão para desconectar'
+          backgroundColor={'$pink8'}
+          borderColor='$purple8'
+          color={'$purple12'}
+          marginLeft={'$4'}
+          size="$1.5"
+          width={'$4'}
           onPress={ () => {
             removeStorage('username');
             removeStorage('password');
@@ -45,8 +54,8 @@ const [ fetchProductsWithSearch ] = useListProducts((state) => [ state.fetchProd
             handleInput('', 'password');
             router.back()
           }}
-          size="$1.5"
-          >Desconectar
+          >
+            Sair
         </Button>
       </YStack>
     

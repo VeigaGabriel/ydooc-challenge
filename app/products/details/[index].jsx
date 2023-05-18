@@ -1,10 +1,11 @@
 import React from 'react'
 import { Stack } from 'expo-router';
 
-import { Image, Progress, ScrollView, TamaguiProvider, Text, YStack } from 'tamagui';
+import { Button, Image, Progress, ScrollView, TamaguiProvider, Text, XStack, YStack } from 'tamagui';
 import config from '../../../tamagui.config';
 
 import { useProductInfo } from '../../../src/services/useProductInfo';
+import { Dimensions } from 'react-native';
 
 export default function Details() {
   const productInfo = useProductInfo(state => state.product);
@@ -21,13 +22,14 @@ export default function Details() {
     thumbnail,
     images
   } = productInfo;
+  const screenWidth = Dimensions.get('window').width;
   console.log(images);
   return (
     <TamaguiProvider config={config}>
-      <ScrollView>
+      <ScrollView backgroundColor={ '$purple12'} height={'100%'}>
         <Stack.Screen options={ { title: 'Detalhes' } } />
-        <YStack backgroundColor={ '$purple12'} height={'100%'}>
-          <Image resizeMode='contain' source={{ uri: thumbnail }} marginLeft={'8%'} width={'84%'} height={'60%'} borderRadius={'$2'}/>
+
+          <Image resizeMode='contain' source={{ uri: thumbnail }} marginLeft={'8%'} width={'84%'} height={'$20'}/>
           <Text px="$6" fontFamily={'$body'} fontSize={'$9'} color={'$pink8'}>
               { title } | { rating }
           </Text>
@@ -54,7 +56,32 @@ export default function Details() {
           <Text px="$6" fontFamily={'$body'} fontSize={'$4'} color={'$pink8'}>
             Estoque: { stock }
           </Text>
+          <YStack margin={'8%'}  width={'84%'} height={'$20'} flex={1}>
+            <ScrollView
+              horizontal
+              pagingEnabled
+              // showsHorizontalScrollIndicator={false}
+            >
+          {
+            (images.length > 0) && images.map((img, i) => (
+                <YStack 
+                  key={i}
+                  width={ screenWidth }
+                >
+                  <Image resizeMode='stretch' source={{ uri: img }} width={'100%'} height={'$20'} backgroundColor={ 'red'} />
+                </YStack>
+              ))
+          }
+            </ScrollView>
         </YStack>
+        <Button
+          backgroundColor={'$pink8'}
+          color={'$pink12'}
+          margin={'8%'}
+          width={'84%'}
+        >
+          COMPRAR
+        </Button>
       </ScrollView>
     </TamaguiProvider>
   )
